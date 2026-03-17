@@ -2,48 +2,46 @@ CREATE DATABASE IF NOT EXISTS beautydb;
 USE beautydb;
 
 CREATE TABLE IF NOT EXISTS beauty_sephora (
-product_id INT PRIMARY KEY,
-product_id,
-product_name,
-brand_id,
-brand_name,
-loves_count,
-rating,
-reviews,
-size,
-variation_type,
-variation_value,
-ingredients,
-price_usd,
-limited_edition,
-new,
-online_only,
-out_of_stock,
-sephora_exclusive,
-highlights,
-primary_category,
-secondary_category,
-tertiary_category,
-child_count
+product_id  VARCHAR(20) NOT NULL,
+product_name VARCHAR(200),
+price_usd DECIMAL(8,2),
+rating DECIMAL(4,2),
+reviews INT,
+primary_category VARCHAR(20),
+PRIMARY KEY (product_id),
+FOREIGN KEY (primary_category) REFERENCES category (category_id),
 );
 
-CREATE TABLE IF NOT EXISTS beauty_world(
-product_name,
-price_usd,
-rating,
-number_of_reviews
-gender_target
-cruelty_free
+CREATE TABLE IF NOT EXISTS beauty_world (
+product_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+product_name VARCHAR (50),
+price_usd DECIMAL (10,2),
+rating DECIMAL (3,2),
+number_of_reviews INT,
+gender_target VARCHAR (10),
+cruelty_free VARCHAR (10),
+country_of_origin VARCHAR (15)
+FOREIGN KEY (country_of_origin) REFERENCES country (country_id),
+FOREIGN KEY (gender_target) REFERENCES gender (gender_id),
+);
+
+CREATE TABLE IF NOT EXISTS country(
+country_id INT,
+country_name VARCHAR (15),
+eu ENUM('yes','no'),
+PRIMARY KEY (country_id)
+);
+
+CREATE TABLE IF NOT EXISTS category(
+category_id INT,
+category_name VARCHAR (20),
+PRIMARY KEY (category_id)
+);
+
+CREATE TABLE IF NOT EXISTS gender(
+gender_id INT,
+gender_name ENUM('female','male','unisex'),
+PRIMARY KEY (gender_id),
 );
 
 
-CREATE TABLE IF NOT EXISTS passengers (
-passenger_id INT PRIMARY KEY,
-name VARCHAR(100),
-class_id INT,
-port_id INT,
-age FLOAT,
-survived TINYINT,
-FOREIGN KEY (class_id) REFERENCES ticket_class(class_id),
-FOREIGN KEY (port_id) REFERENCES port(port_id)
-);
