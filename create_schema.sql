@@ -8,6 +8,20 @@ eu ENUM('yes','no'),
 PRIMARY KEY (country_id)
 );
 
+SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE TABLE country;
+SET FOREIGN_KEY_CHECKS = 1;
+
+INSERT INTO country (country_id, country_name, eu) VALUES
+(1, 'Australia', 'no'),
+(2, 'France', 'yes'),
+(3, 'Germany', 'yes'),
+(4, 'Italy', 'yes'),
+(5, 'Japan', 'no'),
+(6, 'South Korea', 'no'),
+(7, 'UK', 'no'),
+(8, 'USA', 'no');
+
 CREATE TABLE IF NOT EXISTS category(
 category_id INT,
 category_name VARCHAR (20),
