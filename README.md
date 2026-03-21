@@ -42,8 +42,6 @@ https://docs.google.com/presentation/d/1LAG3IEvvtY3rd52WlLuxbaos3TKq7kmd/edit?us
 ---
 
 ## Project structure
-
-# 📁 Project Structure
  
 ```
 beauty_project/sql_beauty_project/
@@ -65,9 +63,17 @@ beauty_project/sql_beauty_project/
 │       ├── sephora_clean.csv
 │       └── world_clean.csv
 │
-└── sql-scripts/
-    ├── create-schema.sql
-    └── query-scripts.sql
+├── notebooks/
+│   ├── beauty-sephora-data-processing.ipynb
+│   ├── beauty-world-data-processing.ipynb
+│   └── data-analysis.ipynb
+│
+├── sql-scripts/
+│   ├── create-schema.sql
+│   └── query-scripts.sql
+│
+├── ER-diagram.png
+└── README.md
 ```
 
 ---
